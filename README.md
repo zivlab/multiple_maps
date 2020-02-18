@@ -5,7 +5,7 @@ This repository includes the analysis and several data sets which allow visualiz
 Scripts are provided in the *Scripts* directory.
 Data sets are provided in the *Data* directory.
 
-To perform the analysis on the example data set, use the *multiple_maps.m* script.  
+To perform the analysis on the provided data sets, use the *multiple_maps.m* script.  
 Before running the script, change the *data_pathway* to the *Data* directory on your computer.
 
 ## References
