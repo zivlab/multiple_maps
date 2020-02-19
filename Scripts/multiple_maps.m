@@ -5,7 +5,7 @@ close all
 
 %%
 % Choose mouse and environment:
-chosen_mouse='C16_M4'; 
+chosen_mouse='C7_M4'; 
 chosen_environment='environment B'; %environment B;
 data_pathway='D:\dev\multiple_maps\multiple_maps\Data\';
 mkdir([data_pathway chosen_mouse '\' chosen_environment],'multiple_maps_results')
@@ -144,11 +144,6 @@ for n=1:num_sessions
         number_of_frames_per_trial(n,k)=min([size(all_velocities{n,k},1),size(all_locations{n,k},1),size(all_events{n,k},1)]);
         number_of_calcium_frames(n,k)=size(all_events{n,k},1);
         number_of_behavioral_frames(n,k)=size(all_locations{n,k},1);
-        if number_of_calcium_frames(n,k)>number_of_behavioral_frames(n,k)                       
-            disp(['There are ' num2str(number_of_calcium_frames(n,k)-(number_of_behavioral_frames(n,k))) ' more neuronal than behavioral frames in session ' num2str(n) ' trial ' num2str(k)])
-        elseif number_of_calcium_frames(n,k)<number_of_behavioral_frames(n,k)       
-            disp(['There are ' num2str((number_of_behavioral_frames(n,k))-number_of_calcium_frames(n,k)) ' more behavioral than neuronal frames in session ' num2str(n) ' trial ' num2str(k)])
-        end
         all_events{n,k}=all_events{n,k}(1:number_of_frames_per_trial(n,k),:);
         binary_events{n,k}=all_events{n,k}>0;
         all_velocities{n,k}=all_velocities{n,k}(1:number_of_frames_per_trial(n,k));
@@ -643,8 +638,8 @@ spatial_information_left_trials=cell(num_sessions,num_trials);
 spatial_information_trials=cell(num_sessions,num_trials);
 for k=1:num_sessions
     for m=1:num_trials
-        spatial_information_right_trials{k,m}=SpatialInfoVER0(squeeze(prior_per_trial(k,m,1,:)),squeeze(rate_maps_right_trials{k,m}(:,:)));
-        spatial_information_left_trials{k,m}=SpatialInfoVER0(squeeze(prior_per_trial(k,m,2,:)),squeeze(rate_maps_left_trials{k,m}(:,:)));
+        spatial_information_right_trials{k,m}=SpatialInfo(squeeze(prior_per_trial(k,m,1,:)),squeeze(rate_maps_right_trials{k,m}(:,:)));
+        spatial_information_left_trials{k,m}=SpatialInfo(squeeze(prior_per_trial(k,m,2,:)),squeeze(rate_maps_left_trials{k,m}(:,:)));
         spatial_information_trials{k,m}=[spatial_information_left_trials{k,m}',spatial_information_right_trials{k,m}'];
     end
 end
@@ -661,8 +656,8 @@ shuffle_place_significance_right_trials=cell(num_sessions,num_trials);
 for k=1:num_sessions
     for m=1:num_trials
         num_events_vec=unique([sum(binary_events_left_trials{k,m}(:,over_threshold_left_trials{k,m}),1), sum(binary_events_right_trials{k,m}(:,over_threshold_right_trials{k,m}),1)]);
-        spatial_info_shuffle_right=ShuffleDistributionOfSpatialInfo_VER1(squeeze(prior_per_trial(k,m,1,:)),num_events_vec,num_shuffles);
-        spatial_info_shuffle_left=ShuffleDistributionOfSpatialInfo_VER1(squeeze(prior_per_trial(k,m,2,:)),num_events_vec,num_shuffles);
+        spatial_info_shuffle_right=ShuffleDistributionOfSpatialInfo(squeeze(prior_per_trial(k,m,1,:)),num_events_vec,num_shuffles);
+        spatial_info_shuffle_left=ShuffleDistributionOfSpatialInfo(squeeze(prior_per_trial(k,m,2,:)),num_events_vec,num_shuffles);
         
         place_significance_left_trials{k,m}=zeros(1,length(spatial_information_left_trials{k,m}));
         shuffle_spatial_information_left_trials{k,m}=zeros(1,length(spatial_information_left_trials{k,m}));
