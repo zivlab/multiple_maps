@@ -16,7 +16,7 @@ figures_directory=[data_pathway chosen_mouse '\' chosen_environment '\multiple_m
 maps_per_trial=xlsread([data_pathway chosen_mouse '\' chosen_environment '\maps per trial.xlsx']);
 map_number_per_trial=maps_per_trial(2:end,2:end);
 
-velocity_thresh=1; % in cm/sec units - previously used: 3;
+velocity_thresh=1; % in cm/sec units
 track_length=96;
 num_bins=24;
 bins_to_use=3:22;
