@@ -1,5 +1,5 @@
 # Multiple maps for the same spatial context can stably coexist in the mouse hippocampus
-This repository includes the analysis and several data sets which allow visualizing the results presented in Sheintuch and Geva et al., 2020. 
+This repository includes analyses and several data sets presented in Sheintuch, Geva et al., 2020. 
 
 ## Usage and documentation
 Scripts are provided in the *Scripts* directory.
