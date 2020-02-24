@@ -9,4 +9,4 @@ To perform the analysis on the provided data sets, use the *multiple_maps.m* scr
 Before running the script, change the *data_pathway* to the *Data* directory on your computer.
 
 ## References
-Liron Sheintuch, Nitzan Geva, Hadas Baumer, Yoav Rechavi, Alon Rubin & Yaniv Ziv. (2020). Multiple maps for the same spatial context can stably coexist in the mouse hippocampus. *Current Biology* 
+Sheintuch, L., Geva, N., Baumer, H., Rechavi, Y., Rubin, A., Ziv, Y. (2020). Multiple maps for the same spatial context can stably coexist in the mouse hippocampus. *Current Biology* 
