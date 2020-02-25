@@ -1,7 +1,18 @@
 function SpatialInfoMat=ShuffleDistributionOfSpatialInfo(SpatialOccupancy,NumberOfEventsVec,NumOfShuffles)
-% SpatialOccupancy=SpatialOccupancy,NumberOfEventsVec;
-% NumberOfEventsVec=[50 70];
-% NumOfShuffles=1000;
+% This function computes the spatial information for each cell.
+
+% Inputs:
+% 1. SpatialOccupancy - a vector of size M (number of spatial bins) with fraction of time spent in each spatial bin (should some up to 1) 
+% 2. NumberOfEventsVec - a vector of size K with all the unique numbers of events for
+% each cell - each unique event number requires a separate shuffle. 
+% 3. NumOfShuffles - the number of shuffles run for each cell (cells with
+% the same number of events will have the same shuffles).
+
+% Outputs:
+% 1. SpatialInfoMat - a matrix of size NumOfShuffles X K. All shuffled
+% values of spatial information are provided for each unique number of events.
+% The decision of which cells are significantly tuned to position according
+% to a defined p-value takes place outside this function.
 
 if size(SpatialOccupancy,1)>1
     SpatialOccupancy=SpatialOccupancy';

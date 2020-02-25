@@ -3,10 +3,10 @@ clc
 clear all
 close all
 
-%%
+%% Setting the paths and parameters:
 % Choose mouse and environment:
-chosen_mouse='C7_M4'; 
-chosen_environment='environment B'; %environment B;
+chosen_mouse='C7_M4'; % mice with one map: ('C6_M4', 'C16_M4'), mice with multiple maps: ('C7_M4', 'C11_M1','C12_M4', 'C13_M1')
+chosen_environment='environment B'; % 'environment A' and 'environment B' are the 'straight' and 'L-shaped' linear tracks, respectively;
 data_pathway='D:\dev\multiple_maps\multiple_maps\Data\';
 mkdir([data_pathway chosen_mouse '\' chosen_environment],'multiple_maps_results')
 mkdir([data_pathway chosen_mouse '\' chosen_environment '\multiple_maps_results'],'figures')
@@ -16,6 +16,7 @@ figures_directory=[data_pathway chosen_mouse '\' chosen_environment '\multiple_m
 maps_per_trial=xlsread([data_pathway chosen_mouse '\' chosen_environment '\maps per trial.xlsx']);
 map_number_per_trial=maps_per_trial(2:end,2:end);
 
+% parameters:
 velocity_thresh=1; % in cm/sec units
 track_length=96;
 num_bins=24;
